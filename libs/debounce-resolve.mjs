@@ -7,6 +7,7 @@ import {useDebounceFn} from "@vueuse/core";
  * @typedef {{
  *     delay: ?number,
  *     maxWait: ?number,
+ *     logErrors: ?boolean,
  * }} DebounceResolveOpts
  */
 
@@ -58,29 +59,38 @@ export default class DebounceResolve {
             const resolveItem = (key, value) => {
                 if(!this.#keysWithCallback.value.has(key))
                     return;
+
+                const callback = this.#keysWithCallback.value.get(key);
                 this.#keysWithCallback.value.delete(key);
+
                 try{
-                    this.#keysWithCallback.value.get(key)?.resolve(value);
+                    callback?.resolve(value);
                 } catch (err){
-                    console.error(err);
+                    if(this.#opts?.logErrors)
+                        console.error(err);
                 }
             };
 
             const rejectItem = (key, error) => {
                 if(!this.#keysWithCallback.value.has(key))
                     return;
+
+                const callback = this.#keysWithCallback.value.get(key);
                 this.#keysWithCallback.value.delete(key);
+
                 try{
-                    this.#keysWithCallback.value.get(key)?.reject(error);
+                    callback?.reject(error);
                 } catch (err){
-                    console.error(err);
+                    if(this.#opts?.logErrors)
+                        console.error(err);
                 }
             };
 
             try {
                 await fn(keysToResolve, resolveItem, rejectItem);
             } catch (err){
-                console.error(err);
+                if(this.#opts?.logErrors)
+                    console.error(err);
                 for (let key of keysToResolve) {
                     rejectItem(key, err);
                 }

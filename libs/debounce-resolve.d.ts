@@ -1,6 +1,7 @@
 export type DebounceResolveOpts<K, V> = {
     delay?: number | null;
     maxWait?: number | null;
+    logErrors?: boolean | null;
 };
 
 export type DebounceResolveFn<K, V> = (
