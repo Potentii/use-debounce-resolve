@@ -1,0 +1,42 @@
+{
+  "name": "@potentii/use-debounce-resolve",
+  "version": "1.0.0",
+  "description": "Debounce resolve for Vue",
+  "author": "Guilherme Reginaldo Ruella <potentii@gmail.com>",
+  "license": "MIT",
+  "main": "main.mjs",
+  "types": "main.d.ts",
+  "type": "module",
+  "files": [
+    "main.mjs",
+    "main.d.ts",
+    "libs/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./main.mjs",
+      "types": "./main.d.ts"
+    }
+  },
+  "keywords": [
+    "debounce",
+    "resolve",
+    "vue",
+    "store"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Potentii/use-debounce-resolve.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Potentii/use-debounce-resolve/issues"
+  },
+  "homepage": "https://github.com/Potentii/use-debounce-resolve#readme",
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "@vueuse/core": ">=13.0.0"
+  }
+}
+
