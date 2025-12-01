@@ -1,6 +1,6 @@
 {
   "name": "@potentii/use-debounce-resolve",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Debounce resolve for Vue",
   "author": "Guilherme Reginaldo Ruella <potentii@gmail.com>",
   "license": "MIT",
